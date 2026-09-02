@@ -138,7 +138,7 @@ const forgotPassword = async (req, res) => {
 
     await user.save();
 
-    const resetLink = `http://localhost:5173/reset-password/${resetToken}`;
+    const resetLink = `https://password-reset-sajina.netlify.app/reset-password/${resetToken}`;
 
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
