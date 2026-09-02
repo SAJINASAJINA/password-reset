@@ -1,18 +1,21 @@
 const crypto = require("crypto");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const nodemailer = require("nodemailer");
+// const nodemailer = require("nodemailer");
+const { Resend } = require("resend");
 const User = require("../models/User");
 
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+// const transporter = nodemailer.createTransport({
+//   host: "smtp.gmail.com",
+//   port: 465,
+//   secure: true,
+//   auth: {
+//     user: process.env.EMAIL_USER,
+//     pass: process.env.EMAIL_PASS,
+//   },
+// });
 
 const registerUser = async (req, res) => {
   try {
@@ -142,17 +145,30 @@ const forgotPassword = async (req, res) => {
 
     const resetLink = `https://password-reset-sajina.netlify.app/reset-password/${resetToken}`;
 
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
+    // await transporter.sendMail({
+    //   from: process.env.EMAIL_USER,
+    //   to: email,
+    //   subject: "Password Reset Request",
+    //   html: `
+    //     <h2>Password Reset</h2>
+    //     <p>You requested to reset your password.</p>
+    //     <p>Click the link below to reset your password:</p>
+    //     <a href="${resetLink}">Reset Password</a>
+    //     <p>This link will expire in 10 minutes.</p>
+    //   `,
+    // });
+
+    await resend.emails.send({
+      from: "onboarding@resend.dev",
       to: email,
       subject: "Password Reset Request",
       html: `
-        <h2>Password Reset</h2>
-        <p>You requested to reset your password.</p>
-        <p>Click the link below to reset your password:</p>
-        <a href="${resetLink}">Reset Password</a>
-        <p>This link will expire in 10 minutes.</p>
-      `,
+    <h2>Password Reset</h2>
+    <p>You requested to reset your password.</p>
+    <p>Click the link below to reset your password:</p>
+    <a href="${resetLink}">Reset Password</a>
+    <p>This link will expire in 10 minutes.</p>
+  `,
     });
 
     console.log("Password reset link:", resetLink);
