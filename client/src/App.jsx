@@ -53,62 +53,61 @@ function Register() {
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-card">
-        <h1>Register</h1>
+    <div className="container d-flex justify-content-center align-items-center min-vh-100 bg-light">
+      <div className="card shadow p-4" style={{ width: "400px" }}>
+        <h2 className="text-center mb-4">Register</h2>
+
+        {message && <div className="alert alert-info py-2">{message}</div>}
 
         <form onSubmit={handleRegister}>
-          <label>Username</label>
-          <br />
+          <div className="mb-3">
+            <label className="form-label">Username</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Enter username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
 
-          <input
-            type="text"
-            placeholder="Enter username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
+          <div className="mb-3">
+            <label className="form-label">Email</label>
+            <input
+              type="email"
+              className="form-control"
+              placeholder="Enter email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
 
-          <br />
-          <br />
+          <div className="mb-3">
+            <label className="form-label">Password</label>
+            <input
+              type="password"
+              className="form-control"
+              placeholder="Enter password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
 
-          <label>Email</label>
-          <br />
-
-          <input
-            type="email"
-            placeholder="Enter email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-
-          <br />
-          <br />
-
-          <label>Password</label>
-          <br />
-
-          <input
-            type="password"
-            placeholder="Enter password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-          <br />
-          <br />
-
-          <button type="submit">Register</button>
+          <button type="submit" className="btn btn-primary w-100">
+            Register
+          </button>
         </form>
 
-        {message && <p className="auth-message">{message}</p>}
-        <div className="auth-links">
-          <p>
-            Already have an account?{" "}
-            <button type="button" onClick={() => navigate("/login")}>
-              Login
-            </button>
-          </p>
-        </div>
+        <p className="text-center mt-3 mb-0">
+          Already have an account?{" "}
+          <button
+            type="button"
+            className="btn btn-link p-0"
+            onClick={() => navigate("/login")}
+          >
+            Login
+          </button>
+        </p>
       </div>
     </div>
   );
@@ -161,36 +160,39 @@ function ForgotPassword() {
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-card">
-        <h1>Forgot Password</h1>
+    <div className="container d-flex justify-content-center align-items-center min-vh-100 bg-light">
+      <div className="card shadow p-4" style={{ width: "400px" }}>
+        <h2 className="text-center mb-4">Forgot Password</h2>
+
+        {message && <div className="alert alert-info py-2">{message}</div>}
 
         <form onSubmit={handleForgotPassword}>
-          <label>Email</label>
-          <br />
+          <div className="mb-3">
+            <label className="form-label">Email</label>
+            <input
+              type="email"
+              className="form-control"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
 
-          <input
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-
-          <br />
-          <br />
-
-          <button type="submit">Send Reset Link</button>
+          <button type="submit" className="btn btn-primary w-100">
+            Send Reset Link
+          </button>
         </form>
 
-        {message && <p className="auth-message">{message}</p>}
-        <div className="auth-links">
-          <p>
-            Remember your password?{" "}
-            <button type="button" onClick={() => navigate("/login")}>
-              Login
-            </button>
-          </p>
-        </div>
+        <p className="text-center mt-3 mb-0">
+          Remember your password?{" "}
+          <button
+            type="button"
+            className="btn btn-link p-0"
+            onClick={() => navigate("/login")}
+          >
+            Login
+          </button>
+        </p>
       </div>
     </div>
   );
@@ -246,54 +248,59 @@ function Login() {
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-card">
-        <h1>Login</h1>
+    <div className="container d-flex justify-content-center align-items-center min-vh-100 bg-light">
+      <div className="card shadow p-4" style={{ width: "400px" }}>
+        <h2 className="text-center mb-4">Login</h2>
+
+        {message && <div className="alert alert-info py-2">{message}</div>}
 
         <form onSubmit={handleLogin}>
-          <label>Email</label>
-          <br />
+          <div className="mb-3">
+            <label className="form-label">Email</label>
+            <input
+              type="email"
+              className="form-control"
+              placeholder="Enter email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
 
-          <input
-            type="email"
-            placeholder="Enter email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          <div className="mb-3">
+            <label className="form-label">Password</label>
+            <input
+              type="password"
+              className="form-control"
+              placeholder="Enter password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
 
-          <br />
-          <br />
-
-          <label>Password</label>
-          <br />
-
-          <input
-            type="password"
-            placeholder="Enter password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-          <br />
-          <br />
-
-          <button type="submit">Login</button>
+          <button type="submit" className="btn btn-primary w-100">
+            Login
+          </button>
         </form>
 
-        {message && <p className="auth-message">{message}</p>}
-        <div className="auth-links">
-          <p>
+        <div className="text-center mt-3">
+          <p className="mb-2">
             Don't have an account?{" "}
-            <button type="button" onClick={() => navigate("/register")}>
+            <button
+              type="button"
+              className="btn btn-link p-0"
+              onClick={() => navigate("/register")}
+            >
               Register
             </button>
           </p>
 
-          <p>
-            <button type="button" onClick={() => navigate("/forgot-password")}>
-              Forgot Password?
-            </button>
-          </p>
+          <button
+            type="button"
+            className="btn btn-link p-0"
+            onClick={() => navigate("/forgot-password")}
+          >
+            Forgot Password?
+          </button>
         </div>
       </div>
     </div>
@@ -345,27 +352,33 @@ function Profile() {
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-card">
-        <h1>Profile</h1>
+    <div className="container d-flex justify-content-center align-items-center min-vh-100 bg-light">
+      <div className="card shadow p-4" style={{ width: "450px" }}>
+        <h2 className="text-center mb-4">Profile</h2>
 
-        <button onClick={getProfile}>Get Profile</button>
+        {message && <div className="alert alert-info py-2">{message}</div>}
 
-        <button className="logout-button" onClick={handleLogout}>
-          Logout
-        </button>
+        <div className="d-grid gap-2 mb-3">
+          <button className="btn btn-primary" onClick={getProfile}>
+            Get Profile
+          </button>
 
-        {message && <p>{message}</p>}
+          <button className="btn btn-danger" onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
 
         {user && (
-          <div className="profile-details">
-            <p>
+          <div className="card bg-light border-0 p-3">
+            <p className="mb-2">
               <strong>ID:</strong> {user._id}
             </p>
-            <p>
+
+            <p className="mb-2">
               <strong>Username:</strong> {user.username}
             </p>
-            <p>
+
+            <p className="mb-0">
               <strong>Email:</strong> {user.email}
             </p>
           </div>
@@ -430,41 +443,39 @@ function ResetPassword() {
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-card">
-        <h1>Reset Password</h1>
+    <div className="container d-flex justify-content-center align-items-center min-vh-100 bg-light">
+      <div className="card shadow p-4" style={{ width: "400px" }}>
+        <h2 className="text-center mb-4">Reset Password</h2>
+
+        {message && <div className="alert alert-info py-2">{message}</div>}
 
         <form onSubmit={handleResetPassword}>
-          <label>New Password</label>
-          <br />
+          <div className="mb-3">
+            <label className="form-label">New Password</label>
+            <input
+              type="password"
+              className="form-control"
+              placeholder="Enter new password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
 
-          <input
-            type="password"
-            placeholder="Enter new password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <div className="mb-3">
+            <label className="form-label">Confirm Password</label>
+            <input
+              type="password"
+              className="form-control"
+              placeholder="Confirm new password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+          </div>
 
-          <br />
-          <br />
-
-          <label>Confirm Password</label>
-          <br />
-
-          <input
-            type="password"
-            placeholder="Confirm new password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-
-          <br />
-          <br />
-
-          <button type="submit">Reset Password</button>
+          <button type="submit" className="btn btn-primary w-100">
+            Reset Password
+          </button>
         </form>
-
-        {message && <p className="auth-message">{message}</p>}
       </div>
     </div>
   );
