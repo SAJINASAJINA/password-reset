@@ -160,7 +160,7 @@ const forgotPassword = async (req, res) => {
 
     const { data, error } = await resend.emails.send({
       from: "onboarding@resend.dev",
-      to: email,
+      to: "shaleeshafi924@gmail.com",
       subject: "Password Reset Request",
       html: `
     <h2>Password Reset</h2>
