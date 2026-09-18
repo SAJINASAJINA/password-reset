@@ -158,7 +158,7 @@ const forgotPassword = async (req, res) => {
     //   `,
     // });
 
-    await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: "onboarding@resend.dev",
       to: email,
       subject: "Password Reset Request",
@@ -171,6 +171,15 @@ const forgotPassword = async (req, res) => {
   `,
     });
 
+    if (error) {
+      console.error("Resend email error:", error);
+
+      return res.status(500).json({
+        message: "Failed to send password reset email",
+      });
+    }
+
+    console.log("Resend email sent:", data.id);
     console.log("Password reset link:", resetLink);
 
     res.status(200).json({
